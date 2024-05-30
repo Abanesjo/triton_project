@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="catamaran">
+  <link name="base_footprint"/>
+  <joint name="footprint_to_base_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00013756 0.0095289 0.20694"
+        rpy="0 0 0" />
+      <mass
+        value="60.344" />
+      <inertia
+        ixx="18.966"
+        ixy="-0.00061837"
+        ixz="0.0021946"
+        iyy="21.505"
+        iyz="-0.1324"
+        izz="3.9171" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="r_thruster">
+    <inertial>
+      <origin
+        xyz="0 0.00044369 0.13724"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/r_thruster.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/r_thruster.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_r_thruster"
+    type="fixed">
+    <origin
+      xyz="-0.56166 0.43963 -0.45538"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="r_thruster" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="l_thruster">
+    <inertial>
+      <origin
+        xyz="0 0.00044369 0.13724"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/l_thruster.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/l_thruster.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_l_thruster"
+    type="fixed">
+    <origin
+      xyz="0.55834 0.43963 -0.45538"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="l_thruster" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="mount">
+    <inertial>
+      <origin
+        xyz="3.4694E-18 0.1 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/mount.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_mount"
+    type="fixed">
+    <origin
+      xyz="0 -0.060366 0.14462"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="mount" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
