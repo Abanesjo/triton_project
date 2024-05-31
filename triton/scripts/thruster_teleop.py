@@ -10,20 +10,31 @@ import tty
 # Define the default force magnitude
 force_magnitude = 500.0
 
-# Prompt user for force magnitude
-try:
-    force_magnitude = float(input("Enter the force magnitude: "))
-except ValueError:
-    print("Invalid input. Using default force magnitude of 500.")
+# Function to prompt user for force magnitude
+def prompt_for_force_magnitude():
+    global force_magnitude
+    try:
+        new_magnitude = float(input("Enter the new force magnitude: "))
+        force_magnitude = new_magnitude
+        update_forces()
+        print(f"Current force magnitude: {force_magnitude}")
+    except ValueError:
+        print("Invalid input. Keeping current force magnitude.")
 
-# Define the force values for different keys
-forces = {
-    'w': [force_magnitude, force_magnitude],
-    's': [-force_magnitude, -force_magnitude],
-    'a': [-force_magnitude, force_magnitude],
-    'd': [force_magnitude, -force_magnitude],
-    'k': [0.0, 0.0]  # Define 'k' for the rest state
-}
+# Update force values based on the current force magnitude
+def update_forces():
+    global forces
+    forces = {
+        'w': [force_magnitude, force_magnitude],
+        's': [-force_magnitude, -force_magnitude],
+        'a': [-force_magnitude, force_magnitude],
+        'd': [force_magnitude, -force_magnitude],
+        'k': [0.0, 0.0]  # Define 'k' for the rest state
+    }
+
+# Initialize forces
+forces = {}
+update_forces()
 
 current_force = forces['k']
 
@@ -52,7 +63,9 @@ if __name__ == '__main__':
     print("Forces are being published to /thruster_forces")
     print("Use WASD keys to move the thrusters")
     print("Press 'k' to stop (rest state)")
+    print("Press 'h' to change force magnitude")
     print("Press 'q' to quit")
+    print(f"Current force magnitude: {force_magnitude}")
 
     try:
         publish_forces(forces['k'])  # Publish rest force initially
@@ -60,6 +73,8 @@ if __name__ == '__main__':
             key = get_key()
             if key in forces:
                 publish_forces(forces[key])
+            elif key == 'h':
+                prompt_for_force_magnitude()
             elif key == 'q':
                 break
 

@@ -53,7 +53,7 @@
         xyz="0 0.00044369 0.13724"
         rpy="0 0 0" />
       <mass
-        value="0" />
+        value="5" />
       <inertia
         ixx="0"
         ixy="0"
@@ -106,7 +106,7 @@
         xyz="0 0.00044369 0.13724"
         rpy="0 0 0" />
       <mass
-        value="0" />
+        value="5" />
       <inertia
         ixx="0"
         ixy="0"
@@ -159,14 +159,14 @@
         xyz="3.4694E-18 0.1 1.3878E-17"
         rpy="0 0 0" />
       <mass
-        value="0" />
+        value="10" />
       <inertia
-        ixx="0"
+        ixx="5"
         ixy="0"
         ixz="0"
-        iyy="0"
+        iyy="5"
         iyz="0"
-        izz="0" />
+        izz="3" />
     </inertial>
     <visual>
       <origin
@@ -206,23 +206,26 @@
       xyz="0 0 0" />
   </joint>
   <gazebo>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
     <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
       <fluid_density>1000</fluid_density>
       <link name="base_link">
-        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
-        <volume>1.0</volume> <!-- Replace with actual volume -->
+        <center_of_volume>0, 0.00921, 0.2079</center_of_volume>
+        <volume>5.24</volume>
       </link>
       <link name="r_thruster">
-        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
-        <volume>0.1</volume> <!-- Replace with actual volume -->
+        <center_of_volume>-0.56166 -0.45494 -0.57687</center_of_volume>
+        <volume>0.02</volume>
       </link>
       <link name="l_thruster">
-        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
-        <volume>0.1</volume> <!-- Replace with actual volume -->
+        <center_of_volume>0.55834 -0.45494 -0.57687</center_of_volume>
+        <volume>0.02</volume>
       </link>
       <link name="mount">
-        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
-        <volume>0.1</volume> <!-- Replace with actual volume -->
+        <center_of_volume>0, 0.24462, 0.06037</center_of_volume>
+        <volume>0.05</volume>
       </link>
     </plugin>
   </gazebo>
