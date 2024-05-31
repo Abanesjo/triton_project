@@ -3,6 +3,7 @@
 #include <gazebo/physics/physics.hh>
 #include <gazebo/gazebo.hh>
 #include <ignition/math/Vector3.hh>
+#include <std_msgs/Float32MultiArray.h> 
 
 #include <iostream>
 #include <string>
@@ -13,27 +14,46 @@ namespace gazebo
     {
     private:
         physics::ModelPtr model;
-        std::string left_thruster_link;
-        std::string right_thruster_link;
-        physics::LinkPtr left_thruster;
-        physics::LinkPtr right_thruster;
+        std::string link_name;
+        physics::LinkPtr base_link;
+
         std::shared_ptr<ros::NodeHandle> nh;
         ros::Subscriber sub;
-        double left_force;
-        double right_force;
+
+        double left_force = 0;
+        double right_force = 0;
         std::string ros_topic;
+        ignition::math::Vector3d left_force_point;
+        ignition::math::Vector3d right_force_point;
+        
         event::ConnectionPtr updateConnection;
 
         void ApplyForces()
         {
-            if (!this->left_thruster || !this->right_thruster)
+            if (!this->base_link)
             {
-                std::cerr << "Thrusters not initialized. Cannot apply forces." << std::endl;
+                std::cerr << "Links not initialized. Cannot apply forces." << std::endl;
                 return;
-            }   
+            }
+            ignition::math::Vector3d left_force_world = this->base_link->WorldPose().Rot().RotateVector(ignition::math::Vector3d(0, this->left_force, 0.0));
+            ignition::math::Vector3d right_force_world = this->base_link->WorldPose().Rot().RotateVector(ignition::math::Vector3d(0, this->right_force, 0.0));
 
-            this->left_thruster->AddForce(ignition::math::Vector3d(3000000000.0, 0.0, 0.0));
-            this->right_thruster->AddForce(ignition::math::Vector3d(3000000000, 0.0, 0.0));
+            this->base_link->AddForceAtRelativePosition(left_force_world, this->left_force_point);
+            this->base_link->AddForceAtRelativePosition(right_force_world, this->right_force_point);
+        }
+        
+        void onROSMsg(const std_msgs::Float32MultiArray::ConstPtr& msg)
+        {
+            if (msg->data.size() >= 2)
+            {
+                this->left_force = msg->data[0] * -1; //the frame is flipped, we need to invert.
+                this->right_force = msg->data[1] * -1;
+                ROS_INFO_STREAM("Received forces - Left: " << this->left_force << ", Right: " << this->right_force);
+            }
+            else
+            {
+                ROS_ERROR("Received invalid force message.");
+            }
         }
 
         void onUpdate()
@@ -41,53 +61,52 @@ namespace gazebo
             this->ApplyForces();
         }
 
+
     public:
         ThrusterPlugin() : ModelPlugin() {}
         virtual ~ThrusterPlugin() {}
 
         void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
         {
+
             this->model = _model;
-            if (_sdf->HasElement("left_thruster"))
+            if (_sdf->HasElement("link_name"))
             {
-                this->left_thruster_link = _sdf->Get<std::string>("left_thruster");
-                std::cerr << "Left Thruster Link: " << this->left_thruster_link << std::endl;
+                this->link_name = _sdf->Get<std::string>("link_name");
+                std::cerr << "Base Link Name: " << this->link_name << std::endl;
             }
             else
             {
-                std::cerr << "No left_thruster element in SDF" << std::endl;
+                std::cerr << "No link element in SDF" << std::endl;
+            }
+            this->base_link = this->model->GetLink(this->link_name);
+
+            if (_sdf->HasElement("left_force_point"))
+            {
+                this->left_force_point = _sdf->GetElement("left_force_point")->GetElement("xyz")->Get<ignition::math::Vector3d>();
+                ROS_INFO_STREAM("Left Force Point: " << this->left_force_point);
             }
 
-            if (_sdf->HasElement("right_thruster"))
+            if (_sdf->HasElement("right_force_point"))
             {
-                this->right_thruster_link = _sdf->Get<std::string>("right_thruster");
-                std::cerr << "Right Thruster Link: " << this->right_thruster_link << std::endl;
+                this->right_force_point = _sdf->GetElement("right_force_point")->GetElement("xyz")->Get<ignition::math::Vector3d>();
+                ROS_INFO_STREAM("Right Force Point: " << this->right_force_point);
+            }
+
+            if (_sdf->HasElement("ros_topic"))
+            {
+                this->ros_topic = _sdf->Get<std::string>("ros_topic");
+                ROS_INFO_STREAM("ROS Topic: " << this->ros_topic);
+                this->nh.reset(new ros::NodeHandle(""));
+                this->sub = this->nh->subscribe(this->ros_topic, 1, &ThrusterPlugin::onROSMsg, this);
             }
             else
             {
-                std::cerr << "No right_thruster element in SDF" << std::endl;
+                ROS_ERROR("ThrusterPlugin: No ROS topic specified.");
+                return;
             }
 
-            this->left_thruster = this->model->GetLink(this->left_thruster_link);
-            this->right_thruster = this->model->GetLink(this->right_thruster_link);
 
-            // Add a check to retry getting the links if they are not found initially
-            if (!this->left_thruster || !this->right_thruster)
-            {
-                ROS_WARN("Waiting for thruster links to be available...");
-                ros::Duration(1.0).sleep();  // Sleep for a while and then retry
-                this->left_thruster = this->model->GetLink(this->left_thruster_link);
-                this->right_thruster = this->model->GetLink(this->right_thruster_link);
-            }
-
-            if (!this->left_thruster)
-            {
-                std::cerr << "Failed to find left_thruster link: " << this->left_thruster_link << std::endl;
-            }
-            if (!this->right_thruster)
-            {
-                std::cerr << "Failed to find right_thruster link: " << this->right_thruster_link << std::endl;
-            }
 
             this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&ThrusterPlugin::onUpdate, this));
         }
