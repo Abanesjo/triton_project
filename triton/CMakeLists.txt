@@ -6,12 +6,13 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   sensor_msgs
+  std_msgs
 )
 
 find_package(gazebo REQUIRED)
 
 catkin_package(
-  CATKIN_DEPENDS gazebo_ros roscpp rospy sensor_msgs
+  CATKIN_DEPENDS gazebo_ros roscpp rospy sensor_msgs std_msgs
 )
 
 include_directories(
@@ -25,3 +26,8 @@ link_directories(
 
 add_library(thruster_plugin SHARED src/thruster_plugin.cpp)
 target_link_libraries(thruster_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+
+catkin_install_python(PROGRAMS
+  scripts/thruster_teleop.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

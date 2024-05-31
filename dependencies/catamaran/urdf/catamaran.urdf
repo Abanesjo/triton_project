@@ -205,4 +205,25 @@
     <axis
       xyz="0 0 0" />
   </joint>
+  <gazebo>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link name="base_link">
+        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
+        <volume>1.0</volume> <!-- Replace with actual volume -->
+      </link>
+      <link name="r_thruster">
+        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
+        <volume>0.1</volume> <!-- Replace with actual volume -->
+      </link>
+      <link name="l_thruster">
+        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
+        <volume>0.1</volume> <!-- Replace with actual volume -->
+      </link>
+      <link name="mount">
+        <center_of_volume>0 0 0</center_of_volume> <!-- Replace with actual center of volume -->
+        <volume>0.1</volume> <!-- Replace with actual volume -->
+      </link>
+    </plugin>
+  </gazebo>
 </robot>

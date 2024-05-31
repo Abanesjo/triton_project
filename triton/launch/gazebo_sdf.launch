@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="paused" default="false"/>
+    <arg name="paused" default="true"/>
     <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="true"/>
     <arg name="headless" default="true"/>
     <arg name="verbose" default="true"/>
 
     <env name="GAZEBO_MODEL_PATH" value="$(find triton)/models"/>
+    <env name="GAZEBO_RESOURCE_PATH" value="$(find triton)/worlds"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find triton)/worlds/water_world.sdf"/>
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui" value="$(arg gui)"/>
