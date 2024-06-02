@@ -40,7 +40,7 @@ roslaunch triton gazebo.launch rviz:=true
 #### Thruster Force Teleop
 You can control the thrusters using WASD. They subscribe to the <code>/thruster_forces</code> topic by defualt. The Teleop tool lets you publish manually. This is launched with another argument.
 ```
-roslaunch triton gazebo.launch control:=false
+roslaunch triton gazebo.launch control:=force
 ```
 ![control](docs/control.png)
 
@@ -52,6 +52,7 @@ Velocity control is also available. It will be less realistic, but will be more 
 ```
 roslaunch triton gazebo.launch control:=velocity
 ```
+![velocity](docs/velocity.png)
 **Do not use both force and velocity plugins at the same time**
 
 You can launch all the arugments at once
