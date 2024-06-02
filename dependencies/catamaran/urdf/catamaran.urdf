@@ -7,20 +7,23 @@
     <child link="base_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
-  <link name="base_link">
+  <link
+    name="base_link">
     <inertial>
       <origin
-        xyz="-0.00013756 0.0095289 0.20694"
+        xyz="1E-05 0.001002 0.20496"
         rpy="0 0 0" />
+      <!-- <mass
+        value="60.33169" /> -->
       <mass
-        value="60.344" />
+        value="100" />
       <inertia
-        ixx="18.966"
-        ixy="-0.00061837"
-        ixz="0.0021946"
-        iyy="21.505"
-        iyz="-0.1324"
-        izz="3.9171" />
+        ixx="19.933"
+        ixy="-0.01996"
+        ixz="-0.00017"
+        iyy="35.13"
+        iyz="-0.33292"
+        izz="17.351" />
     </inertial>
     <visual>
       <origin
@@ -47,20 +50,77 @@
     </collision>
   </link>
   <link
+    name="l_thruster">
+    <inertial>
+      <origin
+        xyz="0 0.0012259 0.13677"
+        rpy="0 0 0" />
+      <!-- <mass
+        value="4.9984" /> -->
+      <mass
+        value="80" />
+      <inertia
+        ixx="0.064215"
+        ixy="2.3379E-18"
+        ixz="5.6998E-20"
+        iyy="0.063315"
+        iyz="0.00053171"
+        izz="0.064415" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/l_thruster.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/l_thruster.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_l_thrruster"
+    type="fixed">
+    <origin
+      xyz="0.55834 0.43963 -0.45538"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="l_thruster" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
     name="r_thruster">
     <inertial>
       <origin
-        xyz="0 0.00044369 0.13724"
+        xyz="0 0.0012259 0.13677"
         rpy="0 0 0" />
+      <!-- <mass
+        value="4.9984" /> -->
       <mass
-        value="5" />
+        value="80" />
       <inertia
-        ixx="0"
-        ixy="0"
-        ixz="0"
-        iyy="0"
-        iyz="0"
-        izz="0" />
+        ixx="0.064215"
+        ixy="1.5195E-18"
+        ixz="-2.1053E-18"
+        iyy="0.063315"
+        iyz="0.00053171"
+        izz="0.064415" />
     </inertial>
     <visual>
       <origin
@@ -73,7 +133,7 @@
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -100,73 +160,20 @@
       xyz="0 0 0" />
   </joint>
   <link
-    name="l_thruster">
-    <inertial>
-      <origin
-        xyz="0 0.00044369 0.13724"
-        rpy="0 0 0" />
-      <mass
-        value="5" />
-      <inertia
-        ixx="0"
-        ixy="0"
-        ixz="0"
-        iyy="0"
-        iyz="0"
-        izz="0" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://catamaran/meshes/l_thruster.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.79216 0.81961 0.93333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://catamaran/meshes/l_thruster.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="base_to_l_thruster"
-    type="fixed">
-    <origin
-      xyz="0.55834 0.43963 -0.45538"
-      rpy="1.5708 0 3.1416" />
-    <parent
-      link="base_link" />
-    <child
-      link="l_thruster" />
-    <axis
-      xyz="0 0 0" />
-  </joint>
-  <link
     name="mount">
     <inertial>
       <origin
-        xyz="3.4694E-18 0.1 1.3878E-17"
+        xyz="-4.835E-17 0.12889 1.1102E-16"
         rpy="0 0 0" />
       <mass
-        value="10" />
+        value="17.43" />
       <inertia
-        ixx="5"
-        ixy="0"
-        ixz="0"
-        iyy="5"
-        iyz="0"
-        izz="3" />
+        ixx="0.58795"
+        ixy="-5.0012E-17"
+        ixz="4.2336E-18"
+        iyy="1.0418"
+        iyz="-1.5713E-17"
+        izz="0.58795" />
     </inertial>
     <visual>
       <origin
@@ -179,7 +186,7 @@
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -196,7 +203,7 @@
     name="base_to_mount"
     type="fixed">
     <origin
-      xyz="0 -0.060366 0.14462"
+      xyz="0 -0.31037 0.14462"
       rpy="1.5708 0 0" />
     <parent
       link="base_link" />
@@ -207,25 +214,25 @@
   </joint>
   <gazebo>
     <buoyancy>
-      <use_true_buoyancy>true</use_true_buoyancy>
+      <use_true_buoyancy>false</use_true_buoyancy>
     </buoyancy>
     <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
       <fluid_density>1000</fluid_density>
       <link name="base_link">
         <center_of_volume>0, 0.00921, 0.2079</center_of_volume>
-        <volume>5.24</volume>
+        <volume>0.55178</volume>
       </link>
       <link name="r_thruster">
         <center_of_volume>-0.56166 -0.45494 -0.57687</center_of_volume>
-        <volume>0.02</volume>
+        <volume>0.00490</volume>
       </link>
       <link name="l_thruster">
         <center_of_volume>0.55834 -0.45494 -0.57687</center_of_volume>
-        <volume>0.02</volume>
+        <volume>0.00490</volume>
       </link>
       <link name="mount">
         <center_of_volume>0, 0.24462, 0.06037</center_of_volume>
-        <volume>0.05</volume>
+        <volume>0.01709</volume>
       </link>
     </plugin>
   </gazebo>
