@@ -8,7 +8,7 @@ import termios
 import tty
 
 # Define the default force magnitude
-force_magnitude = 500.0
+force_magnitude = 600
 
 # Function to prompt user for force magnitude
 def prompt_for_force_magnitude():
@@ -40,8 +40,11 @@ current_force = forces['k']
 
 def get_key():
     tty.setraw(sys.stdin.fileno())
-    select.select([sys.stdin], [], [], 0)
-    key = sys.stdin.read(1)
+    rlist, _, _ = select.select([sys.stdin], [], [], 0)
+    if rlist:
+        key = sys.stdin.read(1)
+    else:
+        key = ''
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 
@@ -64,7 +67,7 @@ if __name__ == '__main__':
     print("Use WASD keys to move the thrusters")
     print("Press 'k' to stop (rest state)")
     print("Press 'h' to change force magnitude")
-    print("Press 'q' to quit")
+    print("Press 'Q' or ESC to quit")
     print(f"Current force magnitude: {force_magnitude}")
 
     try:
@@ -75,7 +78,7 @@ if __name__ == '__main__':
                 publish_forces(forces[key])
             elif key == 'h':
                 prompt_for_force_magnitude()
-            elif key == 'q':
+            elif key == 'q' or key == '\x1b':  # Q or ESC key
                 break
 
     except Exception as e:

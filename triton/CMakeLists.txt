@@ -27,7 +27,12 @@ link_directories(
 add_library(thruster_plugin SHARED src/thruster_plugin.cpp)
 target_link_libraries(thruster_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
+add_library(velocity_plugin SHARED src/velocity_plugin.cpp)
+
+target_link_libraries(velocity_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES}
+)
 catkin_install_python(PROGRAMS
   scripts/thruster_teleop.py
+  scripts/velocity_teleop.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

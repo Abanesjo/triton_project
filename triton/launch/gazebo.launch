@@ -6,7 +6,7 @@
     <arg name="headless" default="true"/>
     <arg name="verbose" default="false"/>
     <arg name="rviz" default="false"/>
-    <arg name="control" default="false"/>
+    <arg name="control" default="none"/>
 
     <env name="GAZEBO_MODEL_PATH" value="$(find triton)/models"/>
 
@@ -27,7 +27,13 @@
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
 
-    <node if="$(arg control)" name="thruster_teleop" pkg="triton" type="thruster_teleop.py" output="screen" launch-prefix="gnome-terminal --command"/>
+    <group if="$(eval arg('control') == 'force')">
+        <node name="thruster_teleop" pkg="triton" type="thruster_teleop.py" output="screen" launch-prefix="gnome-terminal --command"/>
+    </group>
+
+    <group if="$(eval arg('control') == 'velocity')">
+        <node name="velocity_teleop" pkg="triton" type="velocity_teleop.py" output="screen" launch-prefix="gnome-terminal --command"/>
+    </group>
 
     <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find triton)/config/config.rviz"/>
 </launch>

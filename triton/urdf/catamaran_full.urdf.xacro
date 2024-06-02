@@ -25,6 +25,10 @@
           <right_force_point>
             <xyz>-0.558 0.550 -0.450</xyz>
           </right_force_point>
-        </plugin> 
+        </plugin>
+        <plugin name="VelocityPlugin" filename="libvelocity_plugin.so">
+          <link_name>base_footprint</link_name>
+          <ros_topic>velocity</ros_topic>
+        </plugin>
     </gazebo>
 </robot>
