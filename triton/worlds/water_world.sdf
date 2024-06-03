@@ -204,7 +204,7 @@
    
 
     <!-- Object that hangs in the middle of the water  -->
-    <model name="neutral_object">
+    <!-- <model name="neutral_object">
       <pose>8 8 10 0 0 0</pose>
       <link name="object">
         <inertial>
@@ -243,8 +243,28 @@
           <link_name>object</link_name>
         </plugin>
       </link>
-    </model>
+    </model> -->
     
+    <!-- Include the Pepsi can -->
+    <include>
+      <uri>model://debris/pepsi_can</uri>
+    </include>
+    
+    <!-- Include the Coca-Cola can -->
+    <include>
+      <uri>model://debris/coca_cola_can</uri>
+    </include>
+    
+    <!-- Include the Mirinda can -->
+    <include>
+      <uri>model://debris/mirinda_can</uri>
+    </include>
+
+    <!-- Include the water bottle  -->
+    <include>
+      <uri>model://debris/water_bottle</uri>
+    </include>
+
     <physics type="ode">
       <gravity>0 0 -9.8</gravity>
       <max_step_size>0.001</max_step_size>
