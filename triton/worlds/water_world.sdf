@@ -164,7 +164,7 @@
     </model>
 
     <model name="pepsi_can_3">
-      <pose>3 -4 1 0 0 0</pose>
+      <pose>10 11 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -187,7 +187,7 @@
     </model>
     
     <model name="pepsi_can_4">
-      <pose>6 7 1 0 0 0</pose>
+      <pose>17 42 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -210,7 +210,7 @@
     </model>
     
     <model name="pepsi_can_5">
-      <pose>6 7 1 0 0 0</pose>
+      <pose>23 48 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -236,7 +236,7 @@
     
     <!-- Coca-Cola cans -->
     <model name="coca_cola_can_1">
-      <pose>-3 -2 1 0 0 0</pose>
+      <pose>-3 38 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -259,7 +259,7 @@
     </model>
     
     <model name="coca_cola_can_2">
-      <pose>4 4 1 0 0 0</pose>
+      <pose>20 4 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -328,7 +328,7 @@
     </model>
     
     <model name="coca_cola_can_5">
-      <pose>3 15 1 0 0 0</pose>
+      <pose>16 28 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -352,7 +352,7 @@
 
     <!-- Mirinda cans -->
     <model name="mirinda_can_1">
-      <pose>4 -4 1 0 0 0</pose>
+      <pose>4 4 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -398,7 +398,7 @@
     </model>
 
     <model name="mirinda_can_3">
-      <pose>1 -5 1 0 0 0</pose>
+      <pose>22 44 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -444,7 +444,7 @@
     </model>
     
     <model name="mirinda_can_5">
-      <pose>9 12 1 0 0 0</pose>
+      <pose>13 12 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -491,7 +491,7 @@
     </model>
     
     <model name="water_bottle_2">
-      <pose>2 -1 1 0 0 0</pose>
+      <pose>2 47 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -514,7 +514,7 @@
     </model>
 
     <model name="water_bottle_3">
-      <pose>-3 3 1 0 0 0</pose>
+      <pose>3 3 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -537,7 +537,7 @@
     </model>
     
      <model name="water_bottle_4">
-      <pose>-3 3 1 0 0 0</pose>
+      <pose>19 3 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -560,7 +560,7 @@
     </model>
     
     <model name="water_bottle_5">
-      <pose>-3 3 1 0 0 0</pose>
+      <pose>25 40 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
