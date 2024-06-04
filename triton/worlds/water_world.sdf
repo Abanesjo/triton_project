@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.5">
   <world name="default">
-
     <include>
       <uri>model://sun</uri>
     </include>
@@ -117,159 +116,103 @@
       </link>
     </model>
     
-    <!-- Object that sinks  -->
-    <!-- <model name="sinking_object">
-      <pose>5 0 2 0 0 0</pose>
-      <link name="object">
-        <inertial>
-          <mass>500.0</mass> 
-          <inertia>
-            <ixx>0.1</ixx>
-            <iyy>0.1</iyy>
-            <izz>0.1</izz>
-          </inertia>
-        </inertial>
+    <model name="pepsi_can">
+      <pose>2 3 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
         <collision name="collision">
           <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://debris/pepsi_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://debris/pepsi_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Black</name>
-            </script>
-          </material>
         </visual>
-        <buoyancy>
-          <use_true_buoyancy>true</use_true_buoyancy>
-        </buoyancy>
-        <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
-          <fluid_density>1000</fluid_density>
-          <link_name>object</link_name>
-        </plugin>
       </link>
-    </model> -->
-   
-
-    <!-- Object that floats  -->
-    <!-- <model name="floating_object">
-      <pose>10 0 2 0 0 0</pose>
-      <link name="object">
-        <inertial>
-          <mass>1.0</mass> 
-          <inertia>
-            <ixx>0.1</ixx>
-            <iyy>0.1</iyy>
-            <izz>0.1</izz>
-          </inertia>
-        </inertial>
+    </model>
+    
+    <model name="coca_cola_can">
+      <pose>-3 -2 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
         <collision name="collision">
           <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://debris/coca_cola_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://debris/coca_cola_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Green</name>
-            </script>
-          </material>
         </visual>
-        <buoyancy>
-          <use_true_buoyancy>true</use_true_buoyancy>
-        </buoyancy>
-        <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
-          <fluid_density>1000</fluid_density>
-          <link_name>object</link_name>
-        </plugin>
       </link>
-    </model> -->
-   
-
-    <!-- Object that hangs in the middle of the water  -->
-    <!-- <model name="neutral_object">
-      <pose>8 8 10 0 0 0</pose>
-      <link name="object">
-        <inertial>
-          <mass>150.0</mass> 
-          <inertia>
-            <ixx>0.1</ixx>
-            <iyy>0.1</iyy>
-            <izz>0.1</izz>
-          </inertia>
-        </inertial>
+    </model>
+    
+    <model name="mirinda_can">
+      <pose>4 -4 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
         <collision name="collision">
           <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://debris/mirinda_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
+            <mesh>
+              <uri>model://debris/mirinda_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Blue</name>
-            </script>
-          </material>
         </visual>
-        <buoyancy>
-          <use_true_buoyancy>true</use_true_buoyancy>
-        </buoyancy>
-        <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
-          <fluid_density>1000</fluid_density>
-          <link_name>object</link_name>
-        </plugin>
       </link>
-    </model> -->
-    
-    <!-- Include the Pepsi can -->
-    <include>
-      <uri>model://debris/pepsi_can</uri>
-    </include>
-    
-    <!-- Include the Coca-Cola can -->
-    <include>
-      <uri>model://debris/coca_cola_can</uri>
-    </include>
-    
-    <!-- Include the Mirinda can -->
-    <include>
-      <uri>model://debris/mirinda_can</uri>
-    </include>
+    </model>
 
-    <!-- Include the water bottle  -->
-    <include>
-      <uri>model://debris/water_bottle</uri>
-    </include>
+    <model name="water_bottle">
+      <pose>-1 4 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/water_bottle</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/water_bottle</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
 
     <physics type="ode">
       <gravity>0 0 -9.8</gravity>
       <max_step_size>0.001</max_step_size>
       <real_time_update_rate>1000</real_time_update_rate>
     </physics>
-
   </world>
 </sdf>
+
