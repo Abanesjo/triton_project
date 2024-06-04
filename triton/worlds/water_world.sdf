@@ -116,7 +116,8 @@
       </link>
     </model>
     
-    <model name="pepsi_can">
+    <!-- Pepsi cans -->
+    <model name="pepsi_can_1">
       <pose>2 3 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
@@ -139,7 +140,54 @@
       </link>
     </model>
     
-    <model name="coca_cola_can">
+    <model name="pepsi_can_2">
+      <pose>-4 5 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/pepsi_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/pepsi_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="pepsi_can_3">
+      <pose>3 -4 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/pepsi_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/pepsi_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Coca-Cola cans -->
+    <model name="coca_cola_can_1">
       <pose>-3 -2 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
@@ -162,7 +210,54 @@
       </link>
     </model>
     
-    <model name="mirinda_can">
+    <model name="coca_cola_can_2">
+      <pose>4 4 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/coca_cola_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/coca_cola_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="coca_cola_can_3">
+      <pose>-5 -3 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/coca_cola_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/coca_cola_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mirinda cans -->
+    <model name="mirinda_can_1">
       <pose>4 -4 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
@@ -184,9 +279,102 @@
         </visual>
       </link>
     </model>
+    
+    <model name="mirinda_can_2">
+      <pose>-2 2 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/mirinda_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/mirinda_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
 
-    <model name="water_bottle">
+    <model name="mirinda_can_3">
+      <pose>1 -5 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/mirinda_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/mirinda_can</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Water bottles -->
+    <model name="water_bottle_1">
       <pose>-1 4 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/water_bottle</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/water_bottle</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="water_bottle_2">
+      <pose>2 -1 1 0 0 0</pose>
+      <static>false</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://debris/water_bottle</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://debris/water_bottle</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="water_bottle_3">
+      <pose>-3 3 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -215,4 +403,5 @@
     </physics>
   </world>
 </sdf>
+
 
