@@ -116,11 +116,20 @@
       </link>
     </model>
     
+    
     <!-- Pepsi cans -->
 <model name="pepsi_can_1">
   <pose>2 3 1 0 0 0</pose>
   <static>false</static>
   <link name="link">
+    <inertial>
+          <mass>1.0</mass> 
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+          </inertia>
+    </inertial>
     <collision name="collision">
       <geometry>
         <mesh>
@@ -747,5 +756,3 @@
     </physics>
   </world>
 </sdf>
-
-
