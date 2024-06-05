@@ -117,74 +117,96 @@
     </model>
     
     <!-- Pepsi cans -->
-    <model name="pepsi_can_1">
-      <pose>2 3 1 0 0 0</pose>
-      <static>false</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <mesh>
-              <uri>model://debris/pepsi_can</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <mesh>
-              <uri>model://debris/pepsi_can</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-    
-    <model name="pepsi_can_2">
-      <pose>-4 5 1 0 0 0</pose>
-      <static>false</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <mesh>
-              <uri>model://debris/pepsi_can</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <mesh>
-              <uri>model://debris/pepsi_can</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>
+<model name="pepsi_can_1">
+  <pose>2 3 1 0 0 0</pose>
+  <static>false</static>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>model://debris/pepsi_can</uri>
+          <scale>1 1 1</scale>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>model://debris/pepsi_can</uri>
+          <scale>1 1 1</scale>
+        </mesh>
+      </geometry>
+    </visual>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
 
-    <model name="pepsi_can_3">
-      <pose>10 11 1 0 0 0</pose>
-      <static>false</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <mesh>
-              <uri>model://debris/pepsi_can</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <mesh>
-              <uri>model://debris/pepsi_can</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>
+<model name="pepsi_can_2">
+  <pose>19 4 1 0 0 0</pose>
+  <static>false</static>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>model://debris/pepsi_can</uri>
+          <scale>1 1 1</scale>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>model://debris/pepsi_can</uri>
+          <scale>1 1 1</scale>
+        </mesh>
+      </geometry>
+    </visual>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
+<model name="pepsi_can_3">
+  <pose>25 32 1 0 0 0</pose>
+  <static>false</static>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>model://debris/pepsi_can</uri>
+          <scale>1 1 1</scale>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>model://debris/pepsi_can</uri>
+          <scale>1 1 1</scale>
+        </mesh>
+      </geometry>
+    </visual>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     <model name="pepsi_can_4">
       <pose>17 42 1 0 0 0</pose>
@@ -205,9 +227,17 @@
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
-        </visual>
-      </link>
-    </model>
+       </visual>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     <model name="pepsi_can_5">
       <pose>23 48 1 0 0 0</pose>
@@ -229,14 +259,22 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     
     
     <!-- Coca-Cola cans -->
     <model name="coca_cola_can_1">
-      <pose>-3 38 1 0 0 0</pose>
+      <pose>13 38 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -254,9 +292,17 @@
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
-        </visual>
-      </link>
-    </model>
+       </visual>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     <model name="coca_cola_can_2">
       <pose>20 4 1 0 0 0</pose>
@@ -278,11 +324,19 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
 
     <model name="coca_cola_can_3">
-      <pose>-5 -3 1 0 0 0</pose>
+      <pose>8 19 1 0 0 0</pose>
       <static>false</static>
       <link name="link">
         <collision name="collision">
@@ -300,9 +354,17 @@
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
-        </visual>
-      </link>
-    </model>
+       </visual>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
      <model name="coca_cola_can_4">
       <pose>3 15 1 0 0 0</pose>
@@ -324,8 +386,17 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
+ 
     
     <model name="coca_cola_can_5">
       <pose>16 28 1 0 0 0</pose>
@@ -347,8 +418,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
 
     <!-- Mirinda cans -->
     <model name="mirinda_can_1">
@@ -371,8 +450,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     <model name="mirinda_can_2">
       <pose>-2 2 1 0 0 0</pose>
@@ -394,8 +481,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
 
     <model name="mirinda_can_3">
       <pose>22 44 1 0 0 0</pose>
@@ -417,9 +512,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
-    
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
      <model name="mirinda_can_4">
       <pose>9 12 1 0 0 0</pose>
       <static>false</static>
@@ -440,8 +542,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     <model name="mirinda_can_5">
       <pose>13 12 1 0 0 0</pose>
@@ -463,8 +573,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
 
     <!-- Water bottles -->
     <model name="water_bottle_1">
@@ -487,8 +605,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     <model name="water_bottle_2">
       <pose>2 47 1 0 0 0</pose>
@@ -510,8 +636,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
 
     <model name="water_bottle_3">
       <pose>3 3 1 0 0 0</pose>
@@ -533,8 +667,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
      <model name="water_bottle_4">
       <pose>19 3 1 0 0 0</pose>
@@ -556,8 +698,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
     
     <model name="water_bottle_5">
       <pose>25 40 1 0 0 0</pose>
@@ -579,8 +729,16 @@
             </mesh>
           </geometry>
         </visual>
-      </link>
-    </model>
+    <buoyancy>
+      <use_true_buoyancy>true</use_true_buoyancy>
+    </buoyancy>
+    <plugin name="BuoyancyPlugin" filename="libuuv_buoyancy_plugin.so">
+      <fluid_density>1000</fluid_density>
+      <link_name>link</link_name>
+    </plugin>
+  </link>
+</model>
+
 
     <physics type="ode">
       <gravity>0 0 -9.8</gravity>
