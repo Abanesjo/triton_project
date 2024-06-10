@@ -13,7 +13,7 @@
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <!-- <arg name="world_name" value="$(find triton)/worlds/water_world.sdf"/> -->
         <!-- <arg name="world_name" value="$(find wave_gazebo)/worlds/ocean.world" /> -->
-        <arg name="world_name" value="$(find triton)/worlds/water_h.sdf">
+        <arg name="world_name" value="$(find triton)/worlds/water_h.sdf"/>
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui" value="$(arg gui)"/>
