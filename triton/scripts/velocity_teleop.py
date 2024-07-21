@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from std_msgs.msg import Float32MultiArray
+from geometry_msgs.msg import Twist
 import sys
 import select
 import termios
@@ -29,15 +29,20 @@ def get_key():
 
 def publish_velocity():
     global linear_velocity, angular_velocity
-    msg = Float32MultiArray()
-    msg.data = [linear_velocity, angular_velocity]
+    msg = Twist()
+    msg.linear.x = linear_velocity
+    msg.linear.y = 0
+    msg.linear.z = 0
+    msg.angular.x = 0
+    msg.angular.y = 0
+    msg.angular.z = angular_velocity
     pub.publish(msg)
 
 if __name__ == '__main__':
     settings = termios.tcgetattr(sys.stdin)
     
     rospy.init_node('velocity_control')
-    pub = rospy.Publisher('/velocity', Float32MultiArray, queue_size=10)
+    pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 
     print("Control Your Robot!")
     print("---------------------------")

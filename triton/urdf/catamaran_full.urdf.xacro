@@ -28,7 +28,8 @@
         </plugin>
         <plugin name="VelocityPlugin" filename="libvelocity_plugin.so">
           <link_name>base_footprint</link_name>
-          <ros_topic>velocity</ros_topic>
+          <ros_topic>cmd_vel</ros_topic>
+          <odom_topic>odom</odom_topic>
         </plugin>
     </gazebo>
 </robot>
