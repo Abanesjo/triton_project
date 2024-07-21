@@ -7,12 +7,12 @@
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
     <xacro:include filename="$(find realsense_ros_gazebo)/xacro/depthcam.xacro"/>
 
-    <xacro:VLP-16 parent="mount" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="${gpu}">
-        <origin xyz="0 0.195 0" rpy="-1.570796 -1.570796 0" />
+    <xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="${gpu}">
+        <origin xyz="0 -0.33 0.62" rpy="0 0 -1.5708" />
     </xacro:VLP-16>
 
-    <xacro:realsense_d435 sensor_name="d435" parent_link="mount" rate="10">
-        <origin xyz="0 0.1 0.28" rpy="0 -1.570796 -1.570796" />
+    <xacro:realsense_d435 sensor_name="d435" parent_link="base_link" rate="10">
+        <origin xyz="0 -0.38 0.58" rpy="0 0 -1.570796" />
     </xacro:realsense_d435>
 
     <gazebo>

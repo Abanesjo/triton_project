@@ -11,9 +11,7 @@
     <env name="GAZEBO_MODEL_PATH" value="$(find triton)/models"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <!-- <arg name="world_name" value="$(find triton)/worlds/water_world.sdf"/> -->
-        <!-- <arg name="world_name" value="$(find wave_gazebo)/worlds/ocean.world" /> -->
-        <arg name="world_name" value="$(find triton)/worlds/water_h.sdf"/>
+         <arg name="world_name" value="$(find triton)/worlds/competition_world.sdf"/>
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui" value="$(arg gui)"/>
@@ -24,7 +22,7 @@
     <param name="robot_description" command="$(find xacro)/xacro $(find triton)/urdf/catamaran_full.urdf.xacro"/>
     <!-- <param name="robot_description" command="cat $(find catamaran)/urdf/catamaran.urdf"/> -->
 
-    <node pkg="gazebo_ros"  type="spawn_model" name="spawn_model" args="-urdf -param robot_description -model catamaran_full -z 2"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -param robot_description -model catamaran_full -x -7 -y 0 -z 2.1 -R 0 -P 0 -Y 1.570796327"/>
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
 

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="catamaran">
   <link name="base_footprint"/>
@@ -11,17 +14,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="1E-05 0.001002 0.20496"
+        xyz="-3.8439E-06 -0.03234 0.32048"
         rpy="0 0 0" />
       <mass
-        value="60.33169" />
+        value="682.95" />
       <inertia
-        ixx="19.933"
-        ixy="-0.01996"
-        ixz="-0.00017"
-        iyy="35.13"
-        iyz="-0.33292"
-        izz="17.351" />
+        ixx="221.38"
+        ixy="0.00069787"
+        ixz="0.0018539"
+        iyy="229.43"
+        iyz="-3.3962"
+        izz="22.436" />
     </inertial>
     <visual>
       <origin
@@ -34,7 +37,7 @@
       <material
         name="">
         <color
-          rgba="0.89804 0.91765 0.92941 1" />
+          rgba="0.79216 0.81961 0.93333 1" />
       </material>
     </visual>
     <collision>
@@ -48,8 +51,61 @@
     </collision>
   </link>
   <link
+    name="waterwheel">
+    <inertial>
+      <origin
+        xyz="-8.7255E-17 2.7756E-16 -5.5511E-16"
+        rpy="0 0 0" />
+      <mass
+        value="11.524" />
+      <inertia
+        ixx="0.22689"
+        ixy="8.0621E-18"
+        ixz="1.7328E-17"
+        iyy="0.46299"
+        iyz="-9.9067E-16"
+        izz="0.46299" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/waterwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/waterwheel.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="base_to_waterwheel"
+    type="fixed">
+    <origin
+      xyz="0 -0.68537 -0.15538"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="waterwheel" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
     name="l_thruster">
-    <!-- <inertial>
+    <inertial>
       <origin
         xyz="0 0.0012259 0.13677"
         rpy="0 0 0" />
@@ -57,12 +113,12 @@
         value="4.9984" />
       <inertia
         ixx="0.064215"
-        ixy="2.3379E-18"
-        ixz="5.6998E-20"
+        ixy="2.3399E-18"
+        ixz="5.7008E-20"
         iyy="0.063315"
         iyz="0.00053171"
         izz="0.064415" />
-    </inertial> -->
+    </inertial>
     <visual>
       <origin
         xyz="0 0 0"
@@ -88,7 +144,7 @@
     </collision> -->
   </link>
   <joint
-    name="base_to_l_thrruster"
+    name="base_to_l_thruster"
     type="fixed">
     <origin
       xyz="0.55834 0.43963 -0.45538"
@@ -102,20 +158,20 @@
   </joint>
   <link
     name="r_thruster">
-    <!-- <inertial>
+    <inertial>
       <origin
-        xyz="0 0.0012259 0.13677"
+        xyz="0 0 0"
         rpy="0 0 0" />
       <mass
-        value="4.9984" />
+        value="0" />
       <inertia
-        ixx="0.064215"
-        ixy="1.5195E-18"
-        ixz="-2.1053E-18"
-        iyy="0.063315"
-        iyz="0.00053171"
-        izz="0.064415" />
-    </inertial> -->
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
     <visual>
       <origin
         xyz="0 0 0"
@@ -150,59 +206,6 @@
       link="base_link" />
     <child
       link="r_thruster" />
-    <axis
-      xyz="0 0 0" />
-  </joint>
-  <link
-    name="mount">
-    <inertial>
-      <origin
-        xyz="-4.835E-17 0.12889 1.1102E-16"
-        rpy="0 0 0" />
-      <mass
-        value="17.43" />
-      <inertia
-        ixx="0.58795"
-        ixy="-5.0012E-17"
-        ixz="4.2336E-18"
-        iyy="1.0418"
-        iyz="-1.5713E-17"
-        izz="0.58795" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://catamaran/meshes/mount.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://catamaran/meshes/mount.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="base_to_mount"
-    type="fixed">
-    <origin
-      xyz="0 -0.31037 0.14462"
-      rpy="1.5708 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="mount" />
     <axis
       xyz="0 0 0" />
   </joint>
