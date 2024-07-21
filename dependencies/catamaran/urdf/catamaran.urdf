@@ -34,10 +34,8 @@
         <mesh
           filename="package://catamaran/meshes/base_link.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.79216 0.81961 0.93333 1" />
+      <material name="">
+        <color rgba="1 0 0 1" /> <!-- Red color -->
       </material>
     </visual>
     <collision>

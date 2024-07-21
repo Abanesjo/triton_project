@@ -20,18 +20,17 @@
     </include>
 
     <param name="robot_description" command="$(find xacro)/xacro $(find triton)/urdf/catamaran_full.urdf.xacro"/>
-    <!-- <param name="robot_description" command="cat $(find catamaran)/urdf/catamaran.urdf"/> -->
 
     <node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -param robot_description -model catamaran_full -x -7 -y 0 -z 2.1 -R 0 -P 0 -Y 1.570796327"/>
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
 
     <group if="$(eval arg('control') == 'force')">
-        <node name="thruster_teleop" pkg="triton" type="thruster_teleop.py" output="screen" launch-prefix="gnome-terminal --command"/>
+        <node name="thruster_teleop" pkg="triton" type="thruster_teleop.py" output="screen" launch-prefix="xterm -e"/>
     </group>
 
     <group if="$(eval arg('control') == 'velocity')">
-        <node name="velocity_teleop" pkg="triton" type="velocity_teleop.py" output="screen" launch-prefix="gnome-terminal --command"/>
+        <node name="velocity_teleop" pkg="triton" type="velocity_teleop.py" output="screen" launch-prefix="xterm -e"/>
     </group>
 
     <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find triton)/config/config.rviz"/>
