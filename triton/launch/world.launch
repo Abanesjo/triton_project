@@ -11,7 +11,7 @@
     <env name="GAZEBO_MODEL_PATH" value="$(find triton)/models"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-         <arg name="world_name" value="$(find triton)/worlds/competition_world.sdf"/>
+         <arg name="world_name" value="$(find triton)/worlds/obstacle_world.sdf"/>
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="gui" value="$(arg gui)"/>

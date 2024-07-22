@@ -88,7 +88,7 @@ namespace gazebo
             odom.twist.twist.angular.z = angular_velocity.Z();
 
             // Publish the message
-            this->odom_pub.publish(odom);
+            // this->odom_pub.publish(odom);
 
             // Publish the transform over tf
             geometry_msgs::TransformStamped odom_trans;
@@ -101,7 +101,7 @@ namespace gazebo
             odom_trans.transform.translation.z = 0.0;
             odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(this->theta);
 
-            this->odom_broadcaster.sendTransform(odom_trans);
+            // this->odom_broadcaster.sendTransform(odom_trans);
         }
 
     public:
