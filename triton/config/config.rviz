@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /LaserScan1
       Splitter Ratio: 0.5
     Tree Height: 404
   - Class: rviz/Selection
@@ -130,6 +131,16 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        velodyne:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         waterwheel:
           Alpha: 1
           Show Axes: false
@@ -165,7 +176,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: Intensity
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Min Color: 0; 0; 0
@@ -180,7 +191,7 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
+      Value: false
     - Class: rviz/TF
       Enabled: true
       Filter (blacklist): ""
@@ -218,13 +229,11 @@ Visualization Manager:
           Value: true
         laser_frame:
           Value: true
-        map:
-          Value: true
-        odom:
-          Value: true
         r_thruster:
           Value: true
-        scanmatcher_frame:
+        velodyne:
+          Value: true
+        velodyne_base_link:
           Value: true
         waterwheel:
           Value: true
@@ -235,36 +244,35 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base_footprint:
-              base_link:
-                camera_link:
-                  {}
-                d435_bottom_screw_frame:
-                  d435_link:
-                    d435_depth_frame:
-                      d435_color_frame:
-                        d435_color_optical_frame:
-                          {}
-                      d435_depth_optical_frame:
-                        {}
-                      d435_left_ir_frame:
-                        d435_left_ir_optical_frame:
-                          {}
-                      d435_right_ir_frame:
-                        d435_right_ir_optical_frame:
-                          {}
-                l_thruster:
-                  {}
-                laser_frame:
-                  {}
-                r_thruster:
-                  {}
-                waterwheel:
-                  {}
-          scanmatcher_frame:
-            {}
+        base_footprint:
+          base_link:
+            camera_link:
+              {}
+            d435_bottom_screw_frame:
+              d435_link:
+                d435_depth_frame:
+                  d435_color_frame:
+                    d435_color_optical_frame:
+                      {}
+                  d435_depth_optical_frame:
+                    {}
+                  d435_left_ir_frame:
+                    d435_left_ir_optical_frame:
+                      {}
+                  d435_right_ir_frame:
+                    d435_right_ir_optical_frame:
+                      {}
+            l_thruster:
+              {}
+            laser_frame:
+              {}
+            r_thruster:
+              {}
+            velodyne_base_link:
+              velodyne:
+                {}
+            waterwheel:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 0.699999988079071
@@ -277,11 +285,39 @@ Visualization Manager:
       Unreliable: false
       Use Timestamp: false
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.05000000074505806
+      Style: Flat Squares
+      Topic: /scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -321,9 +357,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.1153967380523682
+      Pitch: 0.3903966248035431
       Target Frame: <Fixed Frame>
-      Yaw: 1.7285929918289185
+      Yaw: 1.2385932207107544
     Saved: ~
 Window Geometry:
   Displays:
@@ -343,5 +379,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1662
-  X: 82
-  Y: 33
+  X: 18
+  Y: -31

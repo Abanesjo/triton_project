@@ -38,7 +38,7 @@
         <color rgba="1 0 0 1" /> <!-- Red color -->
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -46,7 +46,7 @@
         <mesh
           filename="package://catamaran/meshes/base_link.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link
     name="waterwheel">
@@ -240,7 +240,7 @@
   <material>Gazebo/Red</material>
   <sensor name="laser" type="ray">
     <visualize>true</visualize>
-    <update_rate>10</update_rate>
+    <update_rate>30</update_rate>
     <ray>
       <scan>
         <horizontal>
@@ -258,7 +258,7 @@
       <robotNamespace>/</robotNamespace>
       <topicName>/scan</topicName>
       <frameName>laser_frame</frameName>
-      <updateRate>10</updateRate>
+      <updateRate>30</updateRate>
     </plugin>
   </sensor>
 </gazebo>
