@@ -38,8 +38,8 @@ namespace gazebo
         // Callback function to handle incoming velocity commands
         void onRosMsg(const geometry_msgs::Twist::ConstPtr& msg)
         {
-            this->linear_velocity = msg->linear.x;
-            this->angular_velocity = msg->angular.z;
+            this->linear_velocity = -1 * msg->linear.x;
+            this->angular_velocity = -1 * msg->angular.z;
             ROS_INFO_STREAM("Received velocities - Linear: " << this->linear_velocity << ", Angular: " << this->angular_velocity);
         }
 
@@ -64,45 +64,45 @@ namespace gazebo
             this->base_link->SetAngularVel(ignition::math::Vector3d(0, 0, this->angular_velocity));
 
             // Publish the odometry
-            this->publishOdometry(current_time, linear_velocity_world, ignition::math::Vector3d(0, 0, this->angular_velocity));
+            // this->publishOdometry(current_time, linear_velocity_world, ignition::math::Vector3d(0, 0, this->angular_velocity));
 
             this->last_time = current_time;
         }
 
-        void publishOdometry(ros::Time current_time, ignition::math::Vector3d linear_velocity, ignition::math::Vector3d angular_velocity)
-        {
-            nav_msgs::Odometry odom;
-            odom.header.stamp = current_time;
-            odom.header.frame_id = "odom";
-            odom.child_frame_id = this->link_name;
+        // void publishOdometry(ros::Time current_time, ignition::math::Vector3d linear_velocity, ignition::math::Vector3d angular_velocity)
+        // {
+        //     nav_msgs::Odometry odom;
+        //     odom.header.stamp = current_time;
+        //     odom.header.frame_id = "odom";
+        //     odom.child_frame_id = this->link_name;
 
-            // Set the position
-            odom.pose.pose.position.x = this->x;
-            odom.pose.pose.position.y = this->y;
-            odom.pose.pose.position.z = 0.0;
-            odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(this->theta);
+        //     // Set the position
+        //     odom.pose.pose.position.x = this->x;
+        //     odom.pose.pose.position.y = this->y;
+        //     odom.pose.pose.position.z = 0.0;
+        //     odom.pose.pose.orientation = tf::createQuaternionMsgFromYaw(this->theta);
 
-            // Set the velocity
-            odom.twist.twist.linear.x = linear_velocity.X();
-            odom.twist.twist.linear.y = linear_velocity.Y();
-            odom.twist.twist.angular.z = angular_velocity.Z();
+        //     // Set the velocity
+        //     odom.twist.twist.linear.x = linear_velocity.X();
+        //     odom.twist.twist.linear.y = linear_velocity.Y();
+        //     odom.twist.twist.angular.z = angular_velocity.Z();
 
-            // Publish the message
-            // this->odom_pub.publish(odom);
+        //     // Publish the message
+        //     this->odom_pub.publish(odom);
 
-            // Publish the transform over tf
-            geometry_msgs::TransformStamped odom_trans;
-            odom_trans.header.stamp = current_time;
-            odom_trans.header.frame_id = "odom";
-            odom_trans.child_frame_id = this->link_name;
+        //     // Publish the transform over tf
+        //     geometry_msgs::TransformStamped odom_trans;
+        //     odom_trans.header.stamp = current_time;
+        //     odom_trans.header.frame_id = "odom";
+        //     odom_trans.child_frame_id = this->link_name;
 
-            odom_trans.transform.translation.x = this->x;
-            odom_trans.transform.translation.y = this->y;
-            odom_trans.transform.translation.z = 0.0;
-            odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(this->theta);
+        //     odom_trans.transform.translation.x = this->x;
+        //     odom_trans.transform.translation.y = this->y;
+        //     odom_trans.transform.translation.z = 0.0;
+        //     odom_trans.transform.rotation = tf::createQuaternionMsgFromYaw(this->theta);
 
-            // this->odom_broadcaster.sendTransform(odom_trans);
-        }
+        //     this->odom_broadcaster.sendTransform(odom_trans);
+        // }
 
     public:
         VelocityPlugin() : ModelPlugin(), x(0.0), y(0.0), theta(0.0) {}
