@@ -25,7 +25,7 @@ To bringup the gazebo simulation, use:
 roslaunch triton gazebo.launch
 ```
 
-![gazebo_simulation](docs/gazebo.png)
+![gazebo_simulation](docs/gazebo_new.png)
 
 The robot contains a 360-degree 2D LiDAR.
 
@@ -57,4 +57,6 @@ roslaunch triton gazebo_old.launch
 ```
 You can click on the image as well to view the youtube video showcasing the pathfinding algorithm.
 [![old_simulation](docs/old_version.png)](https://www.youtube.com/watch?v=b8Hz6W0vQY8)
+
+Alternatively, it is available here: [https://www.youtube.com/watch?v=b8Hz6W0vQY8](https://www.youtube.com/watch?v=b8Hz6W0vQY8)
 
