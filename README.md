@@ -24,42 +24,37 @@ To bringup the gazebo simulation, use:
 ```
 roslaunch triton gazebo.launch
 ```
-\* **Note that the simulation starts paused**
 
 ![gazebo_simulation](docs/gazebo.png)
 
-### Additional Options
+The robot contains a 360-degree 2D LiDAR.
 
-#### RViz
-You can bringup the rviz visualization by adding an argument
-```
-roslaunch triton gazebo.launch rviz:=true
-```
-![rviz](docs/rviz.png)
+![sensors](docs/sensors.png)
 
-#### Thruster Force Teleop
-You can control the thrusters using WASD. They subscribe to the <code>/thruster_forces</code> topic by defualt. The Teleop tool lets you publish manually. This is launched with another argument.
-```
-roslaunch triton gazebo.launch control:=force
-```
-![control](docs/control.png)
+It also has a 360-degree fisheye camera, mounted atop the rod.
+![preview](docs/preview.png)
 
-You can monitor the thruster forces using <code>rostopic</code>
-![rostopic](docs/rostopic.png)
+By default, the control interface is also launched, allowing the force on each thrusters to be controlled.
+![gui](docs/gui.png)
 
-#### Velocity Teleop
-Velocity control is also available. It will be less realistic, but will be more predictable and usually has better simulation performance. The robot subscribes to the <code>/velocity</code> topic.
-```
-roslaunch triton gazebo.launch control:=velocity
-```
-![velocity](docs/velocity.png)
-**Do not use both force and velocity plugins at the same time**
+Hector mapping is available, but disabled by default for now since it is still under development. The same is true for the implementation of the <code>move_base</code> package.
+![hector](docs/hector.png)
 
-You can launch all the arugments at once
+## WSL
+
+For those using WSL, there are a few limitations:
+- The 360-degree camera are incompatible with the GPU support for WSL, so using the camera will require launching in CPU-only mode. This can be done by going to <code>gazebo.launch</code> and modifying the <code>LIBGL_ALWAYS_SOFTWARE</code> environment.
+
 ```
-roslaunch triton gazebo.launch rviz:=true control:=force
+<!-- Set the following to '1' for WSL -->
+<env name="LIBGL_ALWAYS_SOFTWARE" value="1"/>
 ```
-or
+
+## Old Simulation
+For documentation purposes, the old simulation used in the Mubadala proposal stage is still available and can be launched using
 ```
-roslaunch triton gazebo.launch rviz:=true control:=velocity
+roslaunch triton gazebo_old.launch
 ```
+You can click on the image as well to view the youtube video showcasing the pathfinding algorithm.
+[![old_simulation](docs/old_version.png)](https://www.youtube.com/watch?v=b8Hz6W0vQY8)
+

@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<robot name="360_camera">
+    <joint name="base_to_front_camera" type="fixed">
+        <parent link="base_link"/>
+        <child link="front_camera_link"/>
+        <origin xyz="0 0.25 1.6" rpy="0 0 -1.5708"/>
+    </joint>
+    <joint name="base_to_back_camera" type="fixed">
+        <parent link="base_link"/>
+        <child link="back_camera_link"/>
+        <origin xyz="0 0.25 1.6" rpy="0 0 1.5708"/>
+    </joint>
+
+    <link name="front_camera_link">
+        <!-- <visual>
+            <geometry>
+            <cylinder radius="0.05" length="0.04"/>
+            </geometry>
+            <material name="blue">
+            <color rgba="0.0 0.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial> -->
+    </link>
+
+    <link name="back_camera_link">
+        <!-- <visual>
+            <geometry>
+            <cylinder radius="0.05" length="0.04"/>
+            </geometry>
+            <material name="blue">
+            <color rgba="0.0 0.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial> -->
+    </link>
+
+    <gazebo reference="front_camera_link">
+        <sensor name="camera" type="wideanglecamera">
+            <camera>
+            <horizontal_fov>3.1415</horizontal_fov>
+            <image>
+                <width>360</width>
+                <height>360</height>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+        
+                <!-- A new section named `lens`. -->
+                <custom_function>
+                <c1>1.0</c1>   <!-- linear scaling -->
+                <c2>1.0</c2>   <!-- angle scaling (1 for true fisheye) -->
+                <f>1.0</f>     <!-- overall scaling parameter -->
+                <fun>sin</fun> <!-- sin for fisheye distortion -->
+            </custom_function>
+            </camera>
+            
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <cameraName>front_camera</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            </plugin>
+
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="back_camera_link">
+        <sensor name="camera" type="wideanglecamera">
+            <camera>
+            <horizontal_fov>3.1415</horizontal_fov>
+            <image>
+                <width>360</width>
+                <height>360</height>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+        
+                <!-- A new section named `lens`. -->
+                <custom_function>
+                <c1>1.0</c1>   <!-- linear scaling -->
+                <c2>1.0</c2>   <!-- angle scaling (1 for true fisheye) -->
+                <f>1.0</f>     <!-- overall scaling parameter -->
+                <fun>sin</fun> <!-- sin for fisheye distortion -->
+            </custom_function>
+            </camera>
+            
+            <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <cameraName>back_camera</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            </plugin>
+
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+        </sensor>
+    </gazebo>
+</robot>

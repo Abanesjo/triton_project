@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
   std_msgs
+  xacro
 )
 
 find_package(gazebo REQUIRED)
@@ -18,6 +19,7 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
+  include
 )
 
 link_directories(
@@ -28,11 +30,16 @@ add_library(thruster_plugin SHARED src/thruster_plugin.cpp)
 target_link_libraries(thruster_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 add_library(velocity_plugin SHARED src/velocity_plugin.cpp)
+target_link_libraries(velocity_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
-target_link_libraries(velocity_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES}
-)
 catkin_install_python(PROGRAMS
   scripts/thruster_teleop.py
   scripts/velocity_teleop.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+set(XACRO_INORDER)
+xacro_add_files(
+  worlds/competition_waves.world.xacro
+  ${XACRO_INORDER} INSTALL DESTINATION worlds
 )

@@ -8,7 +8,7 @@ import termios
 import tty
 
 # Define the default force magnitude
-force_magnitude = 600
+force_magnitude = 25
 
 # Function to prompt user for force magnitude
 def prompt_for_force_magnitude():

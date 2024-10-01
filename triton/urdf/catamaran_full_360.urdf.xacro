@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="https://www.ros.org/wiki/xacro" name="catamaran_full">
+    <xacro:include filename="$(find catamaran)/urdf/catamaran.urdf"/>
+
+    <xacro:include filename="$(find triton)/urdf/360_camera.urdf"/>
+
+    <xacro:include filename="$(find triton)/urdf/2D_lidar.urdf"/>
+
+    <gazebo>
+      <plugin filename="libusv_gazebo_dynamics_plugin.so" name="usv_dynamics_wamv_dynamics_plugin">
+        <bodyName>base_footprint</bodyName>
+        <!-- Must be same as the ocean model!-->
+        <waterLevel>0</waterLevel>
+        <waterDensity>997.8</waterDensity>
+        <!-- Added mass -->
+        <xDotU>0.0</xDotU>
+        <yDotV>0.0</yDotV>
+        <nDotR>0.0</nDotR>
+        <!-- Linear and quadratic drag -->
+        <xU>51.3</xU>
+        <xUU>72.4</xUU>
+        <yV>40.0</yV>
+        <yVV>0.0</yVV>
+        <zW>500.0</zW>
+        <kP>50.0</kP>
+        <mQ>50.0</mQ>
+        <nR>400.0</nR>
+        <nRR>0.0</nRR>
+        <!-- General dimensions -->
+        <!--<boatArea>2.2</boatArea>-->
+        <hullRadius>0.5</hullRadius>
+        <boatWidth>1.55</boatWidth>
+        <boatLength>2.5</boatLength>
+        <!-- Length discretization, AKA, "N" -->
+        <length_n>2</length_n>
+        <!-- Wave model -->
+        <wave_model>ocean_waves</wave_model>
+      </plugin>
+      <plugin name="thruster_plugin" filename="libthruster_plugin.so">
+        <link_name>base_footprint</link_name>
+        <ros_topic>thruster_forces</ros_topic>
+        <left_force_point>
+          <xyz>0.558 0.550 -0.450</xyz>
+        </left_force_point>
+        <right_force_point>
+          <xyz>-0.558 0.550 -0.450</xyz>
+        </right_force_point>
+      </plugin>
+    </gazebo>
+</robot>

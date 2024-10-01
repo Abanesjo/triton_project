@@ -38,8 +38,8 @@ namespace gazebo
         // Callback function to handle incoming velocity commands
         void onRosMsg(const geometry_msgs::Twist::ConstPtr& msg)
         {
-            this->linear_velocity = -1 * msg->linear.x;
-            this->angular_velocity = -1 * msg->angular.z;
+            this->linear_velocity = msg->linear.x;
+            this->angular_velocity = msg->angular.z;
             ROS_INFO_STREAM("Received velocities - Linear: " << this->linear_velocity << ", Angular: " << this->angular_velocity);
         }
 

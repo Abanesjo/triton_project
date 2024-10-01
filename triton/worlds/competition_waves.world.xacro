@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<sdf version="1.6" xmlns:xacro="http://ros.org/wiki/xacro">
+  <world name="ocean_buoys_world">
+
+    <!-- Scene -->
+    <scene>
+      <sky>
+        <time>10</time>
+        <sunrise>6</sunrise>
+        <sunset>18</sunset>
+        <clouds>
+          <speed>12</speed>
+          <direction>1.57079</direction>
+        </clouds>
+      </sky>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+    <!-- Lights -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+
+    <!--Waves-->
+    <xacro:include filename="$(find wave_gazebo)/world_models/ocean_waves/model.xacro"/>
+    <xacro:ocean_waves />
+
+    <!-- Pool -->
+    <model name="pool">
+        <pose>-4 0 -1.5 0 0 0</pose>
+        <include>
+            <uri>model://pool</uri>
+        </include>
+    </model>
+    <!-- Obstacles -->
+    <model name="a3_buoy">
+    <pose>0 3 4 0 0 0 </pose>
+        <include>
+            <uri>model://polyform_a3</uri>
+        </include>
+    </model>
+    <model name="surmark46104">
+        <include>
+            <uri>model://surmark46104</uri>
+            <pose>6 -3 4 0 0 0 </pose>
+        </include>
+    </model> 
+
+    <model name="mb_marker_buoy_green">
+        <include>
+            <uri>model://mb_marker_buoy_green</uri>
+            <pose> 1 -2 4 0 0 0</pose>
+        </include>
+    </model>
+   
+    <model name="mb_marker_buoy_red">
+        <include>
+            <uri>model://mb_marker_buoy_red</uri>
+            <pose>5 2 4 0 0 0</pose>
+        </include>
+    </model>
+
+    <model name="mb_round_buoy_orange">
+        <include>
+            <uri>model://mb_round_buoy_orange</uri>
+            <pose>8 -1 4 0 0 0</pose>
+        </include>
+    </model>
+
+    <!-- Add auto generated model with N buoys -->
+    <!-- <model name="robotx_2018_qualifying_avoid_obstacles_buoys">
+      <include>
+        <uri>model://robotx_2018_qualifying_avoid_obstacles_buoys</uri>
+      </include>
+    </model> -->
+
+  </world>
+</sdf>

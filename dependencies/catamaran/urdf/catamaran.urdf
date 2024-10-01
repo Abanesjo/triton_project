@@ -14,17 +14,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="-3.8439E-06 -0.03234 0.32048"
+        xyz="-4.0469E-06 -0.038627 0.28088"
         rpy="0 0 0" />
       <mass
-        value="682.95" />
+        value="65" />
       <inertia
-        ixx="221.38"
-        ixy="0.00069787"
-        ixz="0.0018539"
-        iyy="229.43"
-        iyz="-3.3962"
-        izz="22.436" />
+        ixx="21.612"
+        ixy="0.000069785"
+        ixz="0.00018538"
+        iyy="22.401"
+        iyz="-0.49268"
+        izz="1.8827" />
     </inertial>
     <visual>
       <origin
@@ -33,77 +33,26 @@
       <geometry>
         <mesh
           filename="package://catamaran/meshes/base_link.STL" />
-      </geometry>
-      <material name="">
-        <color rgba="1 0 0 1" /> <!-- Red color -->
-      </material>
-    </visual>
-    <!-- <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://catamaran/meshes/base_link.STL" />
-      </geometry>
-    </collision> -->
-  </link>
-  <link
-    name="waterwheel">
-    <inertial>
-      <origin
-        xyz="-8.7255E-17 2.7756E-16 -5.5511E-16"
-        rpy="0 0 0" />
-      <mass
-        value="11.524" />
-      <inertia
-        ixx="0.22689"
-        ixy="8.0621E-18"
-        ixz="1.7328E-17"
-        iyy="0.46299"
-        iyz="-9.9067E-16"
-        izz="0.46299" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://catamaran/meshes/waterwheel.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://catamaran/meshes/waterwheel.STL" />
+          filename="package://catamaran/meshes/base_link.STL" />
       </geometry>
-    </collision> -->
+    </collision>
   </link>
-  <joint
-    name="base_to_waterwheel"
-    type="fixed">
-    <origin
-      xyz="0 -0.68537 -0.15538"
-      rpy="1.5708 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="waterwheel" />
-    <axis
-      xyz="1 0 0" />
-  </joint>
   <link
     name="l_thruster">
-    <inertial>
+    <!-- <inertial>
       <origin
         xyz="0 0.0012259 0.13677"
         rpy="0 0 0" />
@@ -111,12 +60,12 @@
         value="4.9984" />
       <inertia
         ixx="0.064215"
-        ixy="2.3399E-18"
+        ixy="2.3382E-18"
         ixz="5.7008E-20"
         iyy="0.063315"
         iyz="0.00053171"
         izz="0.064415" />
-    </inertial>
+    </inertial> -->
     <visual>
       <origin
         xyz="0 0 0"
@@ -142,7 +91,7 @@
     </collision> -->
   </link>
   <joint
-    name="base_to_l_thruster"
+    name="base_to_l_thrruster"
     type="fixed">
     <origin
       xyz="0.55834 0.43963 -0.45538"
@@ -156,20 +105,20 @@
   </joint>
   <link
     name="r_thruster">
-    <inertial>
+    <!-- <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0 0.0012259 0.13677"
         rpy="0 0 0" />
       <mass
-        value="0" />
+        value="4.9984" />
       <inertia
-        ixx="0"
-        ixy="0"
-        ixz="0"
-        iyy="0"
-        iyz="0"
-        izz="0" />
-    </inertial>
+        ixx="0.064215"
+        ixy="1.5178E-18"
+        ixz="-2.1053E-18"
+        iyy="0.063315"
+        iyz="0.00053171"
+        izz="0.064415" />
+    </inertial> -->
     <visual>
       <origin
         xyz="0 0 0"
@@ -207,126 +156,57 @@
     <axis
       xyz="0 0 0" />
   </joint>
-
-  <!-- 2D LiDAR -->
-<material name="red">
-  <color rgba="1 0 0 1"/>
-</material>
-<joint name="laser_joint" type="fixed">
-  <parent link="base_link"/>
-  <child link="laser_frame"/>
-  <origin xyz="0 -0.33 0.62" rpy="0 0 -1.570796"/>
-</joint>
-<link name="laser_frame">
-  <visual>
-    <geometry>
-      <cylinder radius="0.05" length="0.04"/>
-    </geometry>
-    <material name="red"/>
-  </visual>
-  <collision>
-    <geometry>
-      <cylinder radius="0.05" length="0.04"/>
-    </geometry>
-  </collision>
-  <inertial>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <mass value="0"/>
-    <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-  </inertial>
-</link>
-
-<gazebo reference="laser_frame">
-  <material>Gazebo/Red</material>
-  <sensor name="laser" type="ray">
-    <visualize>true</visualize>
-    <update_rate>30</update_rate>
-    <ray>
-      <scan>
-        <horizontal>
-          <samples>360</samples>
-          <min_angle>-3.14</min_angle>
-          <max_angle>3.14</max_angle>
-        </horizontal>
-      </scan>
-      <range>
-        <min>0.3</min>
-        <max>25</max>
-      </range>
-    </ray>
-    <plugin name="gazebo_ros_laser" filename="libgazebo_ros_laser.so">
-      <robotNamespace>/</robotNamespace>
-      <topicName>/scan</topicName>
-      <frameName>laser_frame</frameName>
-      <updateRate>30</updateRate>
-    </plugin>
-  </sensor>
-</gazebo>
-
-
-
- <!-- 360 Camera -->
-<joint name="base_to_camera" type="fixed">
-  <parent link="base_link"/>
-  <child link="camera_link"/>
-  <origin xyz="0 0 3" rpy="0 0 0"/>
-</joint>
-
-<link name="camera_link">
-  <inertial>
-    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
-    <mass value="0"/>
-    <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-  </inertial>
-</link>
-
-<gazebo reference="camera_link">
-  <sensor name="camera" type="camera">
-    <always_on>true</always_on>
-    <update_rate>30</update_rate>
-    <camera>
-      <horizontal_fov>3.14159</horizontal_fov> <!-- 180 degrees -->
-      <image>
-        <width>320</width>
-        <height>240</height>
-        <format>R8G8B8</format>
-      </image>
-      <clip>
-        <near>0.1</near>
-        <far>100</far>
-      </clip>
-      <lens>
-        <type>custom</type>
-        <custom_function>
-          <c1>1.05</c1>
-          <c2>4</c2>
-          <f>1.0</f>
-          <fun>tan</fun>
-        </custom_function>
-        <scale_to_hfov>true</scale_to_hfov>
-        <cutoff_angle>3.14159</cutoff_angle>
-        <env_texture_size>512</env_texture_size>
-        <env_texture_width>512</env_texture_width>
-        <env_texture_height>512</env_texture_height>
-      </lens>
-    </camera>
-    <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-      <always_on>true</always_on>
-      <update_rate>30.0</update_rate>
-      <camera_name>camera</camera_name>
-      <frame_name>camera_link</frame_name>
-      <image_topic_name>camera/image_raw</image_topic_name>
-      <camera_info_topic_name>camera/camera_info</camera_info_topic_name>
-      <hack_baseline>0.07</hack_baseline>
-      <distortion_k1>0.0</distortion_k1>
-      <distortion_k2>0.0</distortion_k2>
-      <distortion_k3>0.0</distortion_k3>
-      <distortion_t1>0.0</distortion_t1>
-      <distortion_t2>0.0</distortion_t2>
-    </plugin>
-  </sensor>
-</gazebo>
-
-
-
+  <link
+    name="conveyor">
+    <!-- <inertial>
+      <origin
+        xyz="-1.2826E-16 -0.42361 0.3121"
+        rpy="0 0 0" />
+      <mass
+        value="44.387" />
+      <inertia
+        ixx="5.0077"
+        ixy="3.0017E-16"
+        ixz="4.2139E-15"
+        iyy="5.8474"
+        iyz="1.415"
+        izz="3.6185" />
+    </inertial> -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/conveyor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://catamaran/meshes/conveyor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_conveyor"
+    type="fixed">
+    <origin
+      xyz="0 -0.68537 0.44462"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="conveyor" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
 </robot>
