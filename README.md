@@ -11,6 +11,7 @@ cd ../
 Then, install necessary dependencies
 ```
 rosdep install --from-paths src --ignore-src -r -y
+sudo apt-get install xterm
 ```
 Then build with catkin
 ```

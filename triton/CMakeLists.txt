@@ -8,6 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   xacro
+  hector_mapping
+  hector_trajectory_server
 )
 
 find_package(gazebo REQUIRED)
